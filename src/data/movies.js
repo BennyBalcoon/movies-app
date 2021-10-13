@@ -5,6 +5,7 @@ const movies = [
     category: "Comedy",
     likes: 4,
     dislikes: 1,
+    cover: "https://tse1.mm.bing.net/th?id=OIP.O0yXMIKhnzJO2eWzDrFvHgHaLH&pid=Api",
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ const movies = [
     category: "Comedy",
     likes: 2,
     dislikes: 0,
+    cover: "https://tse3.mm.bing.net/th?id=OIP.ivKDPd1_zLO6hlIt4BzdAwHaKd&pid=Api",
   },
   {
     id: "3",
@@ -19,6 +21,7 @@ const movies = [
     category: "Animation",
     likes: 3,
     dislikes: 1,
+    cover: "https://tse1.mm.bing.net/th?id=OIP.M4b2KpfOFsrSWaj-wSVQfAHaKF&pid=Api",
   },
   {
     id: "4",
@@ -26,6 +29,7 @@ const movies = [
     category: "Thriller",
     likes: 6,
     dislikes: 6,
+    cover: "https://tse1.explicit.bing.net/th?id=OIP.t8ZAclP1PiF79W0CIGvlsgHaKD&pid=Api",
   },
   {
     id: "5",
@@ -33,6 +37,7 @@ const movies = [
     category: "Drame",
     likes: 16,
     dislikes: 2,
+    cover: "https://fr.web.img3.acsta.net/c_310_420/pictures/18/11/27/14/25/1451897.jpg",
   },
   {
     id: "6",
@@ -40,6 +45,7 @@ const movies = [
     category: "Thriller",
     likes: 11,
     dislikes: 3,
+    cover: "https://img.seriebox.com/films/0/499/affich_499_1.jpg",
   },
   {
     id: "7",
@@ -47,6 +53,7 @@ const movies = [
     category: "Thriller",
     likes: 12333,
     dislikes: 32,
+    cover: "https://img.seriebox.com/films/0/499/affich_499_1.jpg",
   },
   {
     id: "8",
@@ -54,6 +61,7 @@ const movies = [
     category: "Thriller",
     likes: 2,
     dislikes: 1,
+    cover: "https://tse1.mm.bing.net/th?id=OIP.0bWURGBOX25mTZaGUrbyXgHaKE&pid=Api",
   },
   {
     id: "9",
@@ -61,6 +69,7 @@ const movies = [
     category: "Thriller",
     likes: 2,
     dislikes: 1,
+    cover: "https://tse3.mm.bing.net/th?id=OIP.jjR2uVksE_4A0EE1iU9sUwHaGE&pid=Api",
   },
   {
     id: "10",
@@ -68,6 +77,7 @@ const movies = [
     category: "Thriller",
     likes: 22,
     dislikes: 12,
+    cover: "https://static.blog4ever.com/2014/07/777966/big_artfichier_777966_5606302_20160408345388.jpg",
   },
 ];
 
