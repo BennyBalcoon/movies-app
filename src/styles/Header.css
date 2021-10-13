@@ -1,0 +1,28 @@
+.movie-banner {
+  color: black;
+  text-align: right;
+  padding: 32px;
+  border-bottom: solid 3px black;
+  display: flex;
+  position: relative;
+  /* justify-content: flex-end; */
+  flex-direction: row;
+  align-items: center;
+}
+
+.movie-title {
+  padding-left: 32px;
+}
+
+.movie-logo {
+  height: 45px;
+  width: 45px;
+}
+
+.reel_img {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  right: 0;
+  padding-right: 32px;
+}
