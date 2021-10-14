@@ -63,15 +63,15 @@ const RemoveButton = styled.span`
   }
 `;
 
-function MovieCard({ id, cover, title, category, likes, dislikes, removeCard }) {
+const MovieCard = ({ id, cover, title, category, likes, dislikes, removeCard }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const star = isLiked ? "⭐️" : "";
+  const favorite = isLiked ? "I love it !! ⭐️⭐️⭐️" : "";
   return (
     <CardWrapper onClick={() => setIsLiked(!isLiked)}>
       <li key={id}>
         <CardImage src={cover} alt={`${title}'s cover`}></CardImage>
         <CardTitle>
-          {title} {star} {star}
+          {title} <span>{favorite}</span>
         </CardTitle>
         <CardCategory>{category}</CardCategory>
         <CardRating>{likes} 👍</CardRating>
@@ -80,6 +80,6 @@ function MovieCard({ id, cover, title, category, likes, dislikes, removeCard }) 
       </li>
     </CardWrapper>
   );
-}
+};
 
 export default MovieCard;
