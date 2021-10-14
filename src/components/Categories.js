@@ -1,6 +1,6 @@
 import "../styles/Categories.css";
 
-const Categories = ({ setActiveCategory, categories, activeCategory }) => {
+const Categories = ({ setActiveCategory, categories, activeCategory, setPageNumber }) => {
   return (
     <div className="movies-categories">
       <select
@@ -8,14 +8,21 @@ const Categories = ({ setActiveCategory, categories, activeCategory }) => {
         onChange={(e) => setActiveCategory(e.target.value)}
         className="movies-categories-select"
       >
-        <option value="">Tous genres</option>
+        <option value="">All kinds</option>
         {categories.map((cat) => (
           <option key={cat} value={cat}>
             {cat}
           </option>
         ))}
       </select>
-      <button onClick={() => setActiveCategory("")}>Réinitialiser</button>
+      <button
+        onClick={() => {
+          setActiveCategory("");
+          setPageNumber(0);
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 };
