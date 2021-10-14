@@ -1,6 +1,7 @@
 import "../styles/MoviesList.css";
 import MovieCard from "./MovieCard";
 import Categories from "./Categories";
+import SelectNumberPerPage from "./SelectNumberPerPage";
 import { useState } from "react";
 import { useFetch } from "../utils";
 import { Loader } from "../styles/Loader";
@@ -15,8 +16,10 @@ const LoaderWrapper = styled.div`
 const MoviesList = () => {
   const { data, setData, isLoading, error } = useFetch();
   const [activeCategory, setActiveCategory] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [moviesPerPage, setMoviesPerPage] = useState(4);
 
+  // to filter categories
   const categoriesList = data.map((movie) => movie.category);
   const categoriesListFiltered = categoriesList.reduce((acc, value) => {
     if (acc.indexOf(value) === -1) {
@@ -25,6 +28,7 @@ const MoviesList = () => {
     return acc;
   }, []);
 
+  // to remove a movie card
   const removeCard = (id) => {
     const newCardArray = [...data];
     const index = newCardArray
@@ -39,7 +43,8 @@ const MoviesList = () => {
     setActiveCategory(activeCategory);
   };
 
-  const moviesPerPage = 4;
+  // pagination logic
+  const numChoice = [4, 8, 12];
   const pagesVisited = pageNumber * moviesPerPage;
 
   const displayMovies = data
@@ -78,6 +83,13 @@ const MoviesList = () => {
             categories={categoriesListFiltered}
             setActiveCategory={setActiveCategory}
             activeCategory={activeCategory}
+            setPageNumber={setPageNumber}
+          />
+          <SelectNumberPerPage
+            numChoice={numChoice}
+            moviesPerPage={moviesPerPage}
+            setMoviesPerPage={setMoviesPerPage}
+            setPageNumber={setPageNumber}
           />
           <ul className="movies-list">{displayMovies}</ul>
           <ReactPaginate
