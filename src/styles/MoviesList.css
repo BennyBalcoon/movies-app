@@ -5,3 +5,30 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.paginationButtons {
+  width: 100%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationButtons a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #3792b6;
+  color: #3792b6;
+  cursor: pointer;
+}
+
+.paginationButtons a:hover {
+  color: white;
+  background-color: #3792b6;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #3792b6;
+}

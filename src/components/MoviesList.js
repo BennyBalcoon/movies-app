@@ -1,4 +1,3 @@
-// import { plantList } from "../data/plantList";
 import "../styles/MoviesList.css";
 import MovieCard from "./MovieCard";
 import Categories from "./Categories";
@@ -6,6 +5,7 @@ import { useState } from "react";
 import { useFetch } from "../utils";
 import { Loader } from "../styles/Loader";
 import styled from "styled-components";
+import ReactPaginate from "react-paginate";
 
 const LoaderWrapper = styled.div`
   width: 300px;
@@ -15,9 +15,10 @@ const LoaderWrapper = styled.div`
 const MoviesList = () => {
   const { data, setData, isLoading, error } = useFetch();
   const [activeCategory, setActiveCategory] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
 
-  const categories = data.map((movie) => movie.category);
-  const catList = categories.reduce((acc, value) => {
+  const categoriesList = data.map((movie) => movie.category);
+  const categoriesListFiltered = categoriesList.reduce((acc, value) => {
     if (acc.indexOf(value) === -1) {
       acc.push(value);
     }
@@ -38,6 +39,33 @@ const MoviesList = () => {
     setActiveCategory(activeCategory);
   };
 
+  const moviesPerPage = 4;
+  const pagesVisited = pageNumber * moviesPerPage;
+
+  const displayMovies = data
+    .slice(pagesVisited, pagesVisited + moviesPerPage)
+    .map(({ id, cover, title, category, likes, dislikes }) => {
+      return !activeCategory || activeCategory === category ? (
+        <div key={id}>
+          <MovieCard
+            id={id}
+            cover={cover}
+            title={title}
+            category={category}
+            likes={likes}
+            dislikes={dislikes}
+            removeCard={removeCard}
+          />
+        </div>
+      ) : null;
+    });
+
+  const pageCount = Math.ceil(data.length / moviesPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   return (
     <div>
       {isLoading ? (
@@ -46,24 +74,23 @@ const MoviesList = () => {
         </LoaderWrapper>
       ) : (
         <main>
-          <Categories categories={catList} setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
-          <ul className="movies-list">
-            {data.map(({ id, cover, title, category, likes, dislikes }) =>
-              !activeCategory || activeCategory === category ? (
-                <div key={id}>
-                  <MovieCard
-                    id={id}
-                    cover={cover}
-                    title={title}
-                    category={category}
-                    likes={likes}
-                    dislikes={dislikes}
-                    removeCard={removeCard}
-                  />
-                </div>
-              ) : null
-            )}
-          </ul>
+          <Categories
+            categories={categoriesListFiltered}
+            setActiveCategory={setActiveCategory}
+            activeCategory={activeCategory}
+          />
+          <ul className="movies-list">{displayMovies}</ul>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationButtons"}
+            previousLinkClassName={"previousButton"}
+            nextLinkClassName={"nextButton"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />
         </main>
       )}
     </div>
