@@ -1,6 +1,6 @@
 import "../styles/Categories.css";
 
-function Categories({ setActiveCategory, categories, activeCategory }) {
+const Categories = ({ setActiveCategory, categories, activeCategory }) => {
   return (
     <div className="movies-categories">
       <select
@@ -18,6 +18,6 @@ function Categories({ setActiveCategory, categories, activeCategory }) {
       <button onClick={() => setActiveCategory("")}>Réinitialiser</button>
     </div>
   );
-}
+};
 
 export default Categories;
